@@ -248,7 +248,7 @@ class _HistoryState extends State<History> {
                                     barRods: [
                                       BarChartRodData(
                                         toY: (snapshot.data![index]
-                                                    .activeEnergyBurned -
+                                                    .dietaryEnergyConsumed -
                                                 snapshot.data![index]
                                                     .activeEnergyBurned -
                                                 snapshot.data![index]
