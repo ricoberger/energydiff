@@ -1,0 +1,33 @@
+name: Continuous Delivery
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  ios:
+    name: iOS
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+          cache: true
+          cache-key: 'flutter-:os:-:channel:-:version:-:arch:-:hash:'
+          cache-path: '${{ runner.tool_cache }}/flutter/:channel:-:version:-:arch:'
+
+      - name: Install Dependencies
+        run: |
+          flutter pub get
+
+      - name: Build
+        run: |
+          flutter config --enable-ios
+          flutter build ipa --no-codesign
