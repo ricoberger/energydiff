@@ -70,9 +70,9 @@ extension HistoryScopeExtension on HistoryScope {
       case HistoryScope.month:
         return DateFormat('dd.MM.yyyy').format(dateTime);
       case HistoryScope.sixmonths:
-        return '${DateFormat('dd.MM').format(dateTime.subtract(Duration(seconds: (toInterval() - 60))))} to ${DateFormat('dd.MM').format(dateTime)}';
+        return '${DateFormat('dd.MM').format(dateTime.subtract(Duration(seconds: (toInterval() - 1))))} to ${DateFormat('dd.MM').format(dateTime)}';
       case HistoryScope.year:
-        return '${DateFormat('dd.MM').format(dateTime.subtract(Duration(seconds: (toInterval() - 60))))} to ${DateFormat('dd.MM').format(dateTime)}';
+        return '${DateFormat('dd.MM').format(dateTime.subtract(Duration(seconds: (toInterval() - 1))))} to ${DateFormat('dd.MM').format(dateTime)}';
     }
   }
 }
