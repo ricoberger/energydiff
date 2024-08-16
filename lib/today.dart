@@ -221,7 +221,7 @@ class _TodayState extends State<Today> {
                                 ),
                               ),
                               Text(
-                                '${getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED) - getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED) - getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED)} kcal',
+                                '${getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED) - getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
                                 style: const TextStyle(
                                   color: Color(0xff00fff7),
                                   fontWeight: FontWeight.bold,

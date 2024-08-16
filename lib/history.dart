@@ -248,11 +248,11 @@ class _HistoryState extends State<History> {
                                     barRods: [
                                       BarChartRodData(
                                         toY: (snapshot.data![index]
-                                                    .dietaryEnergyConsumed -
+                                                    .activeEnergyBurned +
                                                 snapshot.data![index]
-                                                    .activeEnergyBurned -
+                                                    .basalEnergyBurned -
                                                 snapshot.data![index]
-                                                    .basalEnergyBurned)
+                                                    .dietaryEnergyConsumed)
                                             .toDouble(),
                                         color: const Color(0xff00fff7),
                                         width: _scope.barWidth(),
@@ -304,7 +304,7 @@ class _HistoryState extends State<History> {
                                           ),
                                           TextSpan(
                                             text:
-                                                'Difference: ${snapshot.data![group.x.toInt()].dietaryEnergyConsumed - snapshot.data![group.x.toInt()].activeEnergyBurned - snapshot.data![group.x.toInt()].basalEnergyBurned}\n',
+                                                'Difference: ${snapshot.data![group.x.toInt()].activeEnergyBurned + snapshot.data![group.x.toInt()].basalEnergyBurned - snapshot.data![group.x.toInt()].dietaryEnergyConsumed}\n',
                                             style: const TextStyle(
                                               color: Color(0xff00fff7),
                                               fontSize: 12,
@@ -476,7 +476,7 @@ class _HistoryState extends State<History> {
                                       ),
                                       TableCell(
                                         child: Text(
-                                          '${snapshot.data![index].dietaryEnergyConsumed - snapshot.data![index].activeEnergyBurned - snapshot.data![index].basalEnergyBurned}',
+                                          '${snapshot.data![index].activeEnergyBurned + snapshot.data![index].basalEnergyBurned - snapshot.data![index].dietaryEnergyConsumed}',
                                           style: const TextStyle(
                                             color: Color(0xff00fff7),
                                             fontSize: 12,
