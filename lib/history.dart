@@ -265,6 +265,7 @@ class _HistoryState extends State<History> {
                                 }),
                                 barTouchData: BarTouchData(
                                   touchTooltipData: BarTouchTooltipData(
+                                    tooltipPadding: const EdgeInsets.all(8),
                                     fitInsideHorizontally: true,
                                     fitInsideVertically: true,
                                     getTooltipColor: (BarChartGroupData group) {
@@ -304,7 +305,7 @@ class _HistoryState extends State<History> {
                                           ),
                                           TextSpan(
                                             text:
-                                                'Difference: ${snapshot.data![group.x.toInt()].activeEnergyBurned + snapshot.data![group.x.toInt()].basalEnergyBurned - snapshot.data![group.x.toInt()].dietaryEnergyConsumed}\n',
+                                                'Difference: ${snapshot.data![group.x.toInt()].activeEnergyBurned + snapshot.data![group.x.toInt()].basalEnergyBurned - snapshot.data![group.x.toInt()].dietaryEnergyConsumed}',
                                             style: const TextStyle(
                                               color: Color(0xff00fff7),
                                               fontSize: 12,
@@ -455,33 +456,45 @@ class _HistoryState extends State<History> {
                                         ),
                                       ),
                                       TableCell(
-                                        child: Text(
-                                          '${snapshot.data![index].activeEnergyBurned + snapshot.data![index].basalEnergyBurned}',
-                                          style: const TextStyle(
-                                            color: Color(0xfff9104f),
-                                            fontSize: 12,
+                                        child: Tooltip(
+                                          message:
+                                              'Active Energy: ${snapshot.data![index].activeEnergyBurned} kcal\nBasal Energy: ${snapshot.data![index].basalEnergyBurned} kcal',
+                                          child: Text(
+                                            '${snapshot.data![index].activeEnergyBurned + snapshot.data![index].basalEnergyBurned}',
+                                            style: const TextStyle(
+                                              color: Color(0xfff9104f),
+                                              fontSize: 12,
+                                            ),
+                                            textAlign: TextAlign.center,
                                           ),
-                                          textAlign: TextAlign.center,
                                         ),
                                       ),
                                       TableCell(
-                                        child: Text(
-                                          '${snapshot.data![index].dietaryEnergyConsumed}',
-                                          style: const TextStyle(
-                                            color: Color(0xffa7fe01),
-                                            fontSize: 12,
+                                        child: Tooltip(
+                                          message:
+                                              'Dietary Energy: ${snapshot.data![index].dietaryEnergyConsumed} kcal',
+                                          child: Text(
+                                            '${snapshot.data![index].dietaryEnergyConsumed}',
+                                            style: const TextStyle(
+                                              color: Color(0xffa7fe01),
+                                              fontSize: 12,
+                                            ),
+                                            textAlign: TextAlign.center,
                                           ),
-                                          textAlign: TextAlign.center,
                                         ),
                                       ),
                                       TableCell(
-                                        child: Text(
-                                          '${snapshot.data![index].activeEnergyBurned + snapshot.data![index].basalEnergyBurned - snapshot.data![index].dietaryEnergyConsumed}',
-                                          style: const TextStyle(
-                                            color: Color(0xff00fff7),
-                                            fontSize: 12,
+                                        child: Tooltip(
+                                          message:
+                                              'Difference: ${snapshot.data![index].activeEnergyBurned + snapshot.data![index].basalEnergyBurned - snapshot.data![index].dietaryEnergyConsumed} kcal',
+                                          child: Text(
+                                            '${snapshot.data![index].activeEnergyBurned + snapshot.data![index].basalEnergyBurned - snapshot.data![index].dietaryEnergyConsumed}',
+                                            style: const TextStyle(
+                                              color: Color(0xff00fff7),
+                                              fontSize: 12,
+                                            ),
+                                            textAlign: TextAlign.center,
                                           ),
-                                          textAlign: TextAlign.center,
                                         ),
                                       ),
                                     ],

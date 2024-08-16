@@ -157,11 +157,15 @@ class _TodayState extends State<Today> {
                                   fontSize: 12,
                                 ),
                               ),
-                              Text(
-                                '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED)} kcal',
-                                style: const TextStyle(
-                                  color: Color(0xfff9104f),
-                                  fontWeight: FontWeight.bold,
+                              Tooltip(
+                                message:
+                                    'Active Energy: ${getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED)} kcal\nBasal Energy: ${getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED)} kcal',
+                                child: Text(
+                                  '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED)} kcal',
+                                  style: const TextStyle(
+                                    color: Color(0xfff9104f),
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ],
@@ -177,11 +181,15 @@ class _TodayState extends State<Today> {
                                   fontSize: 12,
                                 ),
                               ),
-                              Text(
-                                '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
-                                style: const TextStyle(
-                                  color: Color(0xffa7fe01),
-                                  fontWeight: FontWeight.bold,
+                              Tooltip(
+                                message:
+                                    'Dietary Energy: ${getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
+                                child: Text(
+                                  '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
+                                  style: const TextStyle(
+                                    color: Color(0xffa7fe01),
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ],
@@ -197,11 +205,15 @@ class _TodayState extends State<Today> {
                                   fontSize: 12,
                                 ),
                               ),
-                              Text(
-                                '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED) - getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
-                                style: const TextStyle(
-                                  color: Color(0xff00fff7),
-                                  fontWeight: FontWeight.bold,
+                              Tooltip(
+                                message:
+                                    'Difference: ${getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED) - getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
+                                child: Text(
+                                  '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED) - getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
+                                  style: const TextStyle(
+                                    color: Color(0xff00fff7),
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ],
