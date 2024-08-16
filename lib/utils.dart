@@ -1,6 +1,25 @@
 import 'package:health/health.dart';
 import 'package:intl/intl.dart';
 
+enum HistoryBarChartType {
+  burned,
+  consumed,
+  difference,
+}
+
+extension HistoryBarChartTypeExtension on HistoryBarChartType {
+  String toLocalizedString() {
+    switch (this) {
+      case HistoryBarChartType.burned:
+        return 'Burned';
+      case HistoryBarChartType.consumed:
+        return 'Consumed';
+      case HistoryBarChartType.difference:
+        return 'Difference';
+    }
+  }
+}
+
 enum HistoryScope {
   week,
   month,
