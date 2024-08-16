@@ -143,29 +143,6 @@ class _TodayState extends State<Today> {
                         );
                       }
 
-                      if (snapshot.data == null || snapshot.data!.isEmpty) {
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Flexible(
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 16,
-                                  right: 16,
-                                ),
-                                child: Text(
-                                  'No data available.',
-                                  style: TextStyle(
-                                    color: Theme.of(context).colorScheme.error,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        );
-                      }
-
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -181,7 +158,7 @@ class _TodayState extends State<Today> {
                                 ),
                               ),
                               Text(
-                                '${getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED)} kcal',
+                                '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED)} kcal',
                                 style: const TextStyle(
                                   color: Color(0xfff9104f),
                                   fontWeight: FontWeight.bold,
@@ -201,7 +178,7 @@ class _TodayState extends State<Today> {
                                 ),
                               ),
                               Text(
-                                '${getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
+                                '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
                                 style: const TextStyle(
                                   color: Color(0xffa7fe01),
                                   fontWeight: FontWeight.bold,
@@ -221,7 +198,7 @@ class _TodayState extends State<Today> {
                                 ),
                               ),
                               Text(
-                                '${getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED) - getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
+                                '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED) - getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
                                 style: const TextStyle(
                                   color: Color(0xff00fff7),
                                   fontWeight: FontWeight.bold,
