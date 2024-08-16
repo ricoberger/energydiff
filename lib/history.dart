@@ -29,6 +29,7 @@ class History extends StatefulWidget {
 
 class _HistoryState extends State<History> {
   final _now = DateTime.now();
+  HistoryBarChartType _barChartType = HistoryBarChartType.difference;
   HistoryScope _scope = HistoryScope.week;
   late Future<List<HistoryData>> _futureFetchData;
 
@@ -124,6 +125,48 @@ class _HistoryState extends State<History> {
                         color: Theme.of(context).colorScheme.onPrimary,
                         fontWeight: FontWeight.bold,
                       ),
+                    ),
+                  ),
+                  PopupMenuButton(
+                    initialValue: _barChartType,
+                    onSelected: (value) {
+                      setState(() {
+                        _barChartType = value;
+                      });
+                    },
+                    itemBuilder: (context) => [
+                      PopupMenuItem(
+                        value: HistoryBarChartType.burned,
+                        child: Text(
+                          HistoryBarChartType.burned.toLocalizedString(),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: HistoryBarChartType.consumed,
+                        child: Text(
+                          HistoryBarChartType.consumed.toLocalizedString(),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: HistoryBarChartType.difference,
+                        child: Text(
+                          HistoryBarChartType.difference.toLocalizedString(),
+                        ),
+                      ),
+                    ],
+                    child: Text(
+                      _barChartType.toLocalizedString(),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    ' | ',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   PopupMenuButton(
@@ -247,14 +290,32 @@ class _HistoryState extends State<History> {
                                     x: index,
                                     barRods: [
                                       BarChartRodData(
-                                        toY: (snapshot.data![index]
-                                                    .activeEnergyBurned +
-                                                snapshot.data![index]
-                                                    .basalEnergyBurned -
-                                                snapshot.data![index]
-                                                    .dietaryEnergyConsumed)
-                                            .toDouble(),
-                                        color: const Color(0xff00fff7),
+                                        toY: _barChartType ==
+                                                HistoryBarChartType.burned
+                                            ? (snapshot.data![index]
+                                                        .activeEnergyBurned +
+                                                    snapshot.data![index]
+                                                        .basalEnergyBurned)
+                                                .toDouble()
+                                            : _barChartType ==
+                                                    HistoryBarChartType.consumed
+                                                ? (snapshot.data![index]
+                                                        .dietaryEnergyConsumed)
+                                                    .toDouble()
+                                                : (snapshot.data![index]
+                                                            .activeEnergyBurned +
+                                                        snapshot.data![index]
+                                                            .basalEnergyBurned -
+                                                        snapshot.data![index]
+                                                            .dietaryEnergyConsumed)
+                                                    .toDouble(),
+                                        color: _barChartType ==
+                                                HistoryBarChartType.burned
+                                            ? const Color(0xfff9104f)
+                                            : _barChartType ==
+                                                    HistoryBarChartType.consumed
+                                                ? const Color(0xffa7fe01)
+                                                : const Color(0xff00fff7),
                                         width: _scope.barWidth(),
                                         borderRadius: const BorderRadius.all(
                                           Radius.zero,
