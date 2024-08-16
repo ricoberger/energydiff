@@ -4,7 +4,7 @@ Engery Diff is an iOS app written created using Flutter, which shows the
 difference between the burned and consumed energery based on your data from
 Apple Health.
 
-![Screenshot 1](./utils/images/screenshots/1.png)
+![Screenshot 1](./utils/images/screenshots/1.jpeg)
 
 ```bash
 # Launch emulator and run the app
