@@ -30,14 +30,38 @@ class _TodayState extends State<Today> {
       ],
     );
 
-    final data = await Health().getHealthDataFromTypes(
-      startTime: DateTime(_now.year, _now.month, _now.day, 0, 0, 0),
-      endTime: DateTime(_now.year, _now.month, _now.day, 23, 59, 59),
+    // Currently we can not use the Health().getHealthDataFromTypes method,
+    // since it returns incorrect data for the current day. Instead we are using
+    // the Health().getHealthIntervalDataFromTypes method. We are using the end
+    // of the current day and the end of the last day and a one day interval, so
+    // that the returned array only contains the data for the current day.
+    //
+    // See https://github.com/cph-cachet/flutter-plugins/issues/982#issuecomment-2293494556
+    // for more information regarding this issue.
+    //
+    // final data = await Health().getHealthDataFromTypes(
+    //   startTime: DateTime(_now.year, _now.month, _now.day, 0, 0, 0),
+    //   endTime: DateTime(_now.year, _now.month, _now.day, 23, 59, 59),
+    //   types: [
+    //     HealthDataType.ACTIVE_ENERGY_BURNED,
+    //     HealthDataType.BASAL_ENERGY_BURNED,
+    //     HealthDataType.DIETARY_ENERGY_CONSUMED,
+    //   ],
+    // );
+
+    final end = DateTime(_now.year, _now.month, _now.day, 23, 59, 59);
+    final start =
+        end.subtract(Duration(seconds: HistoryScope.week.toInterval()));
+
+    final data = await Health().getHealthIntervalDataFromTypes(
+      startDate: start,
+      endDate: end,
       types: [
         HealthDataType.ACTIVE_ENERGY_BURNED,
         HealthDataType.BASAL_ENERGY_BURNED,
         HealthDataType.DIETARY_ENERGY_CONSUMED,
       ],
+      interval: HistoryScope.week.toInterval(),
     );
 
     return data;
