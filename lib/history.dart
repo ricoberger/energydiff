@@ -508,6 +508,7 @@ class _HistoryState extends State<History> {
                                           _scope.formatDateTime(
                                             snapshot.data![index].interval,
                                           ),
+                                          maxLines: 1,
                                           style: TextStyle(
                                             color: Theme.of(context)
                                                 .colorScheme

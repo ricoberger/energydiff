@@ -85,9 +85,9 @@ extension HistoryScopeExtension on HistoryScope {
   String formatDateTime(DateTime dateTime) {
     switch (this) {
       case HistoryScope.week:
-        return DateFormat('EEE. dd.MM.yyyy').format(dateTime);
+        return DateFormat('EEE. dd.MM').format(dateTime);
       case HistoryScope.month:
-        return DateFormat('EEE. dd.MM.yyyy').format(dateTime);
+        return DateFormat('EEE. dd.MM').format(dateTime);
       case HistoryScope.sixmonths:
         return '${DateFormat('dd.MM').format(dateTime.subtract(Duration(seconds: (toInterval() - 1))))} to ${DateFormat('dd.MM').format(dateTime)}';
       case HistoryScope.year:
