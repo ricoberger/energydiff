@@ -165,10 +165,10 @@ packages:
     dependency: "direct main"
     description:
       name: fl_chart
-      sha256: "94307bef3a324a0d329d3ab77b2f0c6e5ed739185ffc029ed28c0f9b019ea7ef"
+      sha256: "74959b99b92b9eebeed1a4049426fd67c4abc3c5a0f4d12e2877097d6a11ae08"
       url: "https://pub.dev"
     source: hosted
-    version: "0.69.0"
+    version: "0.69.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -194,10 +194,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_native_splash
-      sha256: ee5c9bd2b74ea8676442fd4ab876b5d41681df49276488854d6c81a5377c0ef1
+      sha256: "1152ab0067ca5a2ebeb862fe0a762057202cceb22b7e62692dcbabf6483891bb"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.2"
+    version: "2.4.3"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -212,10 +212,10 @@ packages:
     dependency: "direct main"
     description:
       name: health
-      sha256: "01d6318b2d813d4b87044f9adb5a588f672acd176434ac380259d28de1f321a4"
+      sha256: "148ce984c2119f50224b4d187552d751b91aa47f4de8968daf05e6e596ddee50"
       url: "https://pub.dev"
     source: hosted
-    version: "11.1.0"
+    version: "11.1.1"
   html:
     dependency: transitive
     description:
