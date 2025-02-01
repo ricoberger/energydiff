@@ -38,9 +38,9 @@ dependencies:
   cupertino_icons: ^1.0.8
 
   flutter_native_splash: ^2.4.4
-  fl_chart: ^0.70.0
-  health: ^11.1.1
-  intl: ^0.19.0
+  fl_chart: ^0.70.2
+  health: ^12.0.1
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -53,7 +53,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
 
-  flutter_launcher_icons: ^0.14.2
+  flutter_launcher_icons: ^0.14.3
   import_sorter: ^4.6.0
 
 # For information on the generic Dart part of this file, see the
