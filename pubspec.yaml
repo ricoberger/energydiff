@@ -38,7 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.8
 
   flutter_native_splash: ^2.4.6
-  fl_chart: ^0.71.0
+  fl_chart: ^1.0.0
   health: ^12.2.0
   intl: ^0.20.2
 
@@ -51,7 +51,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
   flutter_launcher_icons: ^0.14.3
   import_sorter: ^4.6.0
