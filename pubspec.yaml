@@ -38,7 +38,7 @@ dependencies:
 
   flutter_native_splash: ^2.4.6
   fl_chart: ^1.0.0
-  health: ^12.2.0
+  health: ^13.1.1
   intl: ^0.20.2
 
 dev_dependencies:
@@ -52,7 +52,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
 
-  flutter_launcher_icons: ^0.14.3
+  flutter_launcher_icons: ^0.14.4
   import_sorter: ^4.6.0
 
 # For information on the generic Dart part of this file, see the
