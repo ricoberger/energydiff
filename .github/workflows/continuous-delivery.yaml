@@ -34,4 +34,5 @@ jobs:
       - name: Build
         run: |
           flutter config --enable-ios
+          flutter config --enable-swift-package-manager
           flutter build ipa --no-codesign
