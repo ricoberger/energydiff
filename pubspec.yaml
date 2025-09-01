@@ -37,8 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.8
 
   flutter_native_splash: ^2.4.6
-  fl_chart: ^1.0.0
-  health: ^13.1.1
+  fl_chart: ^1.1.0
+  health: ^13.1.4
   intl: ^0.20.2
 
 dev_dependencies:
