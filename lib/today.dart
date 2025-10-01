@@ -50,8 +50,9 @@ class _TodayState extends State<Today> {
     // );
 
     final end = DateTime(_now.year, _now.month, _now.day, 23, 59, 59);
-    final start =
-        end.subtract(Duration(seconds: HistoryScope.week.toInterval()));
+    final start = end.subtract(
+      Duration(seconds: HistoryScope.week.toInterval()),
+    );
 
     final data = await Health().getHealthIntervalDataFromTypes(
       startDate: start,
@@ -89,9 +90,7 @@ class _TodayState extends State<Today> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                      right: 8,
-                    ),
+                    padding: const EdgeInsets.only(right: 8),
                     child: Icon(
                       Icons.today,
                       color: Theme.of(context).colorScheme.onPrimary,
@@ -108,9 +107,7 @@ class _TodayState extends State<Today> {
                     ),
                   ),
                   Text(
-                    DateFormat('dd.MM.yyyy').format(
-                      DateTime.now(),
-                    ),
+                    DateFormat('dd.MM.yyyy').format(DateTime.now()),
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.onPrimary,
                       fontSize: 12,
@@ -121,131 +118,139 @@ class _TodayState extends State<Today> {
               const SizedBox(height: 16),
               FutureBuilder(
                 future: _futureFetchData,
-                builder: (
-                  BuildContext context,
-                  AsyncSnapshot<List<HealthDataPoint>> snapshot,
-                ) {
-                  switch (snapshot.connectionState) {
-                    case ConnectionState.none:
-                    case ConnectionState.waiting:
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              left: 16,
-                              right: 16,
-                            ),
-                            child: CircularProgressIndicator(
-                              color: Theme.of(context).colorScheme.onPrimary,
-                            ),
-                          ),
-                        ],
-                      );
-                    default:
-                      if (snapshot.hasError) {
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Flexible(
-                              child: Padding(
+                builder:
+                    (
+                      BuildContext context,
+                      AsyncSnapshot<List<HealthDataPoint>> snapshot,
+                    ) {
+                      switch (snapshot.connectionState) {
+                        case ConnectionState.none:
+                        case ConnectionState.waiting:
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
                                 padding: const EdgeInsets.only(
                                   left: 16,
                                   right: 16,
                                 ),
-                                child: Text(
-                                  snapshot.error.toString(),
-                                  style: TextStyle(
-                                    color: Theme.of(context).colorScheme.error,
-                                  ),
+                                child: CircularProgressIndicator(
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onPrimary,
                                 ),
                               ),
-                            ),
-                          ],
-                        );
-                      }
+                            ],
+                          );
+                        default:
+                          if (snapshot.hasError) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 16,
+                                      right: 16,
+                                    ),
+                                    child: Text(
+                                      snapshot.error.toString(),
+                                      style: TextStyle(
+                                        color: Theme.of(
+                                          context,
+                                        ).colorScheme.error,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          }
 
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                'Burned',
-                                style: TextStyle(
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              Tooltip(
-                                message:
-                                    'Active Energy: ${getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED)} kcal\nBasal Energy: ${getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED)} kcal',
-                                child: Text(
-                                  '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED)} kcal',
-                                  style: const TextStyle(
-                                    color: Color(0xfff9104f),
-                                    fontWeight: FontWeight.bold,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Burned',
+                                    style: TextStyle(
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.onPrimary,
+                                      fontSize: 12,
+                                    ),
                                   ),
-                                ),
+                                  Tooltip(
+                                    message:
+                                        'Active Energy: ${getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED)} kcal\nBasal Energy: ${getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED)} kcal',
+                                    child: Text(
+                                      '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED)} kcal',
+                                      style: const TextStyle(
+                                        color: Color(0xfff9104f),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Consumed',
+                                    style: TextStyle(
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.onPrimary,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Tooltip(
+                                    message:
+                                        'Dietary Energy: ${getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
+                                    child: Text(
+                                      '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
+                                      style: const TextStyle(
+                                        color: Color(0xffa7fe01),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Difference',
+                                    style: TextStyle(
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.onPrimary,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Tooltip(
+                                    message:
+                                        'Difference: ${getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED) - getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
+                                    child: Text(
+                                      '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED) - getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
+                                      style: const TextStyle(
+                                        color: Color(0xff00fff7),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Consumed',
-                                style: TextStyle(
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              Tooltip(
-                                message:
-                                    'Dietary Energy: ${getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
-                                child: Text(
-                                  '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
-                                  style: const TextStyle(
-                                    color: Color(0xffa7fe01),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Difference',
-                                style: TextStyle(
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              Tooltip(
-                                message:
-                                    'Difference: ${getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED) - getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
-                                child: Text(
-                                  '${snapshot.data == null || snapshot.data!.isEmpty ? 0 : getData(snapshot.data!, HealthDataType.ACTIVE_ENERGY_BURNED) + getData(snapshot.data!, HealthDataType.BASAL_ENERGY_BURNED) - getData(snapshot.data!, HealthDataType.DIETARY_ENERGY_CONSUMED)} kcal',
-                                  style: const TextStyle(
-                                    color: Color(0xff00fff7),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      );
-                  }
-                },
+                          );
+                      }
+                    },
               ),
             ],
           ),

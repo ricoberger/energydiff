@@ -40,10 +40,7 @@ class App extends StatelessWidget {
         tooltipTheme: const TooltipThemeData(
           padding: EdgeInsets.all(8),
           preferBelow: false,
-          textStyle: TextStyle(
-            color: Colors.white,
-            fontSize: 12,
-          ),
+          textStyle: TextStyle(color: Colors.white, fontSize: 12),
           decoration: BoxDecoration(
             color: Color(0xff171f2c),
             borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -74,21 +71,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Energy Diff'),
-      ),
+      appBar: AppBar(centerTitle: true, title: const Text('Energy Diff')),
       body: const SafeArea(
         child: Padding(
           padding: EdgeInsets.all(16),
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Today(),
-                SizedBox(height: 16),
-                History(),
-              ],
-            ),
+            child: Column(children: [Today(), SizedBox(height: 16), History()]),
           ),
         ),
       ),

@@ -1,11 +1,7 @@
 import 'package:health/health.dart';
 import 'package:intl/intl.dart';
 
-enum HistoryBarChartType {
-  burned,
-  consumed,
-  difference,
-}
+enum HistoryBarChartType { burned, consumed, difference }
 
 extension HistoryBarChartTypeExtension on HistoryBarChartType {
   String toLocalizedString() {
@@ -20,12 +16,7 @@ extension HistoryBarChartTypeExtension on HistoryBarChartType {
   }
 }
 
-enum HistoryScope {
-  week,
-  month,
-  sixmonths,
-  year,
-}
+enum HistoryScope { week, month, sixmonths, year }
 
 extension HistoryScopeExtension on HistoryScope {
   String toLocalizedString() {
@@ -106,7 +97,14 @@ int getData(List<HealthDataPoint> data, HealthDataType type) {
 }
 
 int formatHealthDataPointValue(HealthDataPoint dataPoint) {
-  return dataPoint.value.toJson()['numeric_value'].round();
+  final data = dataPoint.value.toJson();
+
+  if (!data.containsKey('numericValue')) {
+    return 0;
+  }
+
+  final value = data['numericValue'];
+  return value.round();
 }
 
 List<DateTime> getIntervals(List<HealthDataPoint> data) {

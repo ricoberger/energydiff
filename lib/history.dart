@@ -109,9 +109,7 @@ class _HistoryState extends State<History> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                      right: 8,
-                    ),
+                    padding: const EdgeInsets.only(right: 8),
                     child: Icon(
                       Icons.calendar_month,
                       color: Theme.of(context).colorScheme.onPrimary,
@@ -208,10 +206,7 @@ class _HistoryState extends State<History> {
               const SizedBox(height: 16),
               FutureBuilder(
                 future: _futureFetchData,
-                builder: (
-                  BuildContext context,
-                  AsyncSnapshot<List<HistoryData>> snapshot,
-                ) {
+                builder: (BuildContext context, AsyncSnapshot<List<HistoryData>> snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.none:
                     case ConnectionState.waiting:
@@ -220,10 +215,7 @@ class _HistoryState extends State<History> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(
-                              left: 16,
-                              right: 16,
-                            ),
+                            padding: const EdgeInsets.only(left: 16, right: 16),
                             child: CircularProgressIndicator(
                               color: Theme.of(context).colorScheme.onPrimary,
                             ),
@@ -284,38 +276,47 @@ class _HistoryState extends State<History> {
                             width: double.infinity,
                             child: BarChart(
                               BarChartData(
-                                barGroups: List.generate(snapshot.data!.length,
-                                    (index) {
+                                barGroups: List.generate(snapshot.data!.length, (
+                                  index,
+                                ) {
                                   return BarChartGroupData(
                                     x: index,
                                     barRods: [
                                       BarChartRodData(
-                                        toY: _barChartType ==
+                                        toY:
+                                            _barChartType ==
                                                 HistoryBarChartType.burned
-                                            ? (snapshot.data![index]
-                                                        .activeEnergyBurned +
-                                                    snapshot.data![index]
-                                                        .basalEnergyBurned)
-                                                .toDouble()
+                                            ? (snapshot
+                                                          .data![index]
+                                                          .activeEnergyBurned +
+                                                      snapshot
+                                                          .data![index]
+                                                          .basalEnergyBurned)
+                                                  .toDouble()
                                             : _barChartType ==
-                                                    HistoryBarChartType.consumed
-                                                ? (snapshot.data![index]
-                                                        .dietaryEnergyConsumed)
-                                                    .toDouble()
-                                                : (snapshot.data![index]
-                                                            .activeEnergyBurned +
-                                                        snapshot.data![index]
-                                                            .basalEnergyBurned -
-                                                        snapshot.data![index]
-                                                            .dietaryEnergyConsumed)
-                                                    .toDouble(),
-                                        color: _barChartType ==
+                                                  HistoryBarChartType.consumed
+                                            ? (snapshot
+                                                      .data![index]
+                                                      .dietaryEnergyConsumed)
+                                                  .toDouble()
+                                            : (snapshot
+                                                          .data![index]
+                                                          .activeEnergyBurned +
+                                                      snapshot
+                                                          .data![index]
+                                                          .basalEnergyBurned -
+                                                      snapshot
+                                                          .data![index]
+                                                          .dietaryEnergyConsumed)
+                                                  .toDouble(),
+                                        color:
+                                            _barChartType ==
                                                 HistoryBarChartType.burned
                                             ? const Color(0xfff9104f)
                                             : _barChartType ==
-                                                    HistoryBarChartType.consumed
-                                                ? const Color(0xffa7fe01)
-                                                : const Color(0xff00fff7),
+                                                  HistoryBarChartType.consumed
+                                            ? const Color(0xffa7fe01)
+                                            : const Color(0xff00fff7),
                                         width: _scope.barWidth(),
                                         borderRadius: const BorderRadius.all(
                                           Radius.zero,
@@ -330,18 +331,17 @@ class _HistoryState extends State<History> {
                                     fitInsideHorizontally: true,
                                     fitInsideVertically: true,
                                     getTooltipColor: (BarChartGroupData group) {
-                                      return Theme.of(context)
-                                          .colorScheme
-                                          .primary;
+                                      return Theme.of(
+                                        context,
+                                      ).colorScheme.primary;
                                     },
-                                    getTooltipItem:
-                                        (group, groupIndex, rod, rodIndex) {
+                                    getTooltipItem: (group, groupIndex, rod, rodIndex) {
                                       return BarTooltipItem(
                                         '${_scope.formatDateTime(snapshot.data![group.x.toInt()].interval)}\n',
                                         TextStyle(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onPrimary,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.onPrimary,
                                           fontWeight: FontWeight.normal,
                                           fontSize: 12,
                                         ),
@@ -381,14 +381,10 @@ class _HistoryState extends State<History> {
                                 titlesData: FlTitlesData(
                                   show: true,
                                   rightTitles: const AxisTitles(
-                                    sideTitles: SideTitles(
-                                      showTitles: false,
-                                    ),
+                                    sideTitles: SideTitles(showTitles: false),
                                   ),
                                   topTitles: const AxisTitles(
-                                    sideTitles: SideTitles(
-                                      showTitles: false,
-                                    ),
+                                    sideTitles: SideTitles(showTitles: false),
                                   ),
                                   leftTitles: AxisTitles(
                                     sideTitles: SideTitles(
@@ -396,15 +392,17 @@ class _HistoryState extends State<History> {
                                       reservedSize: 32,
                                       getTitlesWidget: (value, titleMeta) {
                                         return Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 16),
+                                          padding: const EdgeInsets.only(
+                                            top: 16,
+                                          ),
                                           child: Text(
-                                            NumberFormat.compact()
-                                                .format(value.toInt()),
+                                            NumberFormat.compact().format(
+                                              value.toInt(),
+                                            ),
                                             style: TextStyle(
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .onPrimary,
+                                              color: Theme.of(
+                                                context,
+                                              ).colorScheme.onPrimary,
                                               fontSize: 10,
                                             ),
                                             textAlign: TextAlign.center,
@@ -414,9 +412,7 @@ class _HistoryState extends State<History> {
                                     ),
                                   ),
                                   bottomTitles: const AxisTitles(
-                                    sideTitles: SideTitles(
-                                      showTitles: false,
-                                    ),
+                                    sideTitles: SideTitles(showTitles: false),
                                   ),
                                 ),
                                 borderData: FlBorderData(show: false),
@@ -424,18 +420,18 @@ class _HistoryState extends State<History> {
                                   show: true,
                                   getDrawingHorizontalLine: (value) {
                                     return FlLine(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onPrimary,
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.onPrimary,
                                       strokeWidth: 0.4,
                                       dashArray: [8, 4],
                                     );
                                   },
                                   getDrawingVerticalLine: (value) {
                                     return FlLine(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onPrimary,
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.onPrimary,
                                       strokeWidth: 0.4,
                                       dashArray: [8, 4],
                                     );
@@ -498,71 +494,70 @@ class _HistoryState extends State<History> {
                                   ),
                                 ],
                               ),
-                              ...List<TableRow>.generate(
-                                snapshot.data!.length,
-                                (index) {
-                                  return TableRow(
-                                    children: [
-                                      TableCell(
+                              ...List<
+                                TableRow
+                              >.generate(snapshot.data!.length, (index) {
+                                return TableRow(
+                                  children: [
+                                    TableCell(
+                                      child: Text(
+                                        _scope.formatDateTime(
+                                          snapshot.data![index].interval,
+                                        ),
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.onPrimary,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ),
+                                    TableCell(
+                                      child: Tooltip(
+                                        message:
+                                            'Active Energy: ${snapshot.data![index].activeEnergyBurned} kcal\nBasal Energy: ${snapshot.data![index].basalEnergyBurned} kcal',
                                         child: Text(
-                                          _scope.formatDateTime(
-                                            snapshot.data![index].interval,
-                                          ),
-                                          maxLines: 1,
-                                          style: TextStyle(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onPrimary,
+                                          '${snapshot.data![index].activeEnergyBurned + snapshot.data![index].basalEnergyBurned}',
+                                          style: const TextStyle(
+                                            color: Color(0xfff9104f),
                                             fontSize: 12,
                                           ),
+                                          textAlign: TextAlign.center,
                                         ),
                                       ),
-                                      TableCell(
-                                        child: Tooltip(
-                                          message:
-                                              'Active Energy: ${snapshot.data![index].activeEnergyBurned} kcal\nBasal Energy: ${snapshot.data![index].basalEnergyBurned} kcal',
-                                          child: Text(
-                                            '${snapshot.data![index].activeEnergyBurned + snapshot.data![index].basalEnergyBurned}',
-                                            style: const TextStyle(
-                                              color: Color(0xfff9104f),
-                                              fontSize: 12,
-                                            ),
-                                            textAlign: TextAlign.center,
+                                    ),
+                                    TableCell(
+                                      child: Tooltip(
+                                        message:
+                                            'Dietary Energy: ${snapshot.data![index].dietaryEnergyConsumed} kcal',
+                                        child: Text(
+                                          '${snapshot.data![index].dietaryEnergyConsumed}',
+                                          style: const TextStyle(
+                                            color: Color(0xffa7fe01),
+                                            fontSize: 12,
                                           ),
+                                          textAlign: TextAlign.center,
                                         ),
                                       ),
-                                      TableCell(
-                                        child: Tooltip(
-                                          message:
-                                              'Dietary Energy: ${snapshot.data![index].dietaryEnergyConsumed} kcal',
-                                          child: Text(
-                                            '${snapshot.data![index].dietaryEnergyConsumed}',
-                                            style: const TextStyle(
-                                              color: Color(0xffa7fe01),
-                                              fontSize: 12,
-                                            ),
-                                            textAlign: TextAlign.center,
+                                    ),
+                                    TableCell(
+                                      child: Tooltip(
+                                        message:
+                                            'Difference: ${snapshot.data![index].activeEnergyBurned + snapshot.data![index].basalEnergyBurned - snapshot.data![index].dietaryEnergyConsumed} kcal',
+                                        child: Text(
+                                          '${snapshot.data![index].activeEnergyBurned + snapshot.data![index].basalEnergyBurned - snapshot.data![index].dietaryEnergyConsumed}',
+                                          style: const TextStyle(
+                                            color: Color(0xff00fff7),
+                                            fontSize: 12,
                                           ),
+                                          textAlign: TextAlign.center,
                                         ),
                                       ),
-                                      TableCell(
-                                        child: Tooltip(
-                                          message:
-                                              'Difference: ${snapshot.data![index].activeEnergyBurned + snapshot.data![index].basalEnergyBurned - snapshot.data![index].dietaryEnergyConsumed} kcal',
-                                          child: Text(
-                                            '${snapshot.data![index].activeEnergyBurned + snapshot.data![index].basalEnergyBurned - snapshot.data![index].dietaryEnergyConsumed}',
-                                            style: const TextStyle(
-                                              color: Color(0xff00fff7),
-                                              fontSize: 12,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ),
+                                    ),
+                                  ],
+                                );
+                              }),
                             ],
                           ),
                         ],
