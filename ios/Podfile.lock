@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - health (13.2.0):
+  - health (13.2.1):
     - Flutter
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
-  health: b9d24db6428057ea8aa69518bfccec584fdfbe1e
+  health: e310387222e199d4b3261337490a67aaff6d18eb
 
 PODFILE CHECKSUM: 4f1c12611da7338d21589c0b2ecd6bd20b109694
 
