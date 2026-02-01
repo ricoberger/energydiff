@@ -39,7 +39,7 @@ dependencies:
 
   flutter_native_splash: ^2.4.7
   fl_chart: ^1.1.1
-  health: ^13.2.1
+  health: ^13.3.0
   intl: ^0.20.2
 
 dev_dependencies:
