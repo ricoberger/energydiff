@@ -212,10 +212,10 @@ packages:
     dependency: "direct main"
     description:
       name: health
-      sha256: ec6ba8485bb86cac9001fe721811dae470172d0a153ad6778e77fb1ff975dd8f
+      sha256: "0508ef1b018198309933a7d615bb59a244c85ad96b57d328ebd47f062e4f7c69"
       url: "https://pub.dev"
     source: hosted
-    version: "13.2.1"
+    version: "13.3.0"
   html:
     dependency: transitive
     description:
@@ -479,4 +479,4 @@ packages:
     version: "3.1.3"
 sdks:
   dart: ">=3.10.4 <4.0.0"
-  flutter: "3.38.5"
+  flutter: ">=3.38.5"
