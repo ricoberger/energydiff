@@ -212,10 +212,10 @@ packages:
     dependency: "direct main"
     description:
       name: health
-      sha256: "0508ef1b018198309933a7d615bb59a244c85ad96b57d328ebd47f062e4f7c69"
+      sha256: "2d9e119f3a1d281139f93149b41032b9f80b759960875bc784c5a25dd3c17524"
       url: "https://pub.dev"
     source: hosted
-    version: "13.3.0"
+    version: "13.3.1"
   html:
     dependency: transitive
     description:
