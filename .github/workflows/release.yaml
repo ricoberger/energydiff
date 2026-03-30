@@ -3,23 +3,19 @@ name: Release
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - v*
 
 jobs:
-  # The "Changelog" job creates a new release draft on GitHub.
-  changelog:
-    name: Changelog
+  release:
+    name: Release
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
-
     steps:
-      - name: Update Changelog
-        uses: release-drafter/release-drafter@v6
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag'
         with:
-          config-name: release.yaml
-          disable-autolabeler: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          generate_release_notes: true
+          make_latest: true
