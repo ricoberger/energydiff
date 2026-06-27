@@ -8,7 +8,7 @@ between the burned and consumed energery based on your data from Apple Health.
 ```bash
 # Launch emulator and run the app
 flutter emulators --launch apple_ios_simulator
-flutter run -d "iPhone 15"
+flutter run -d "iPhone 17"
 
 # Run the app on a device
 flutter devices
