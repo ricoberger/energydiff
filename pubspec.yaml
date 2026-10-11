@@ -20,7 +20,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.1.4+7
 
 environment:
-  flutter: 3.44.8
+  flutter: 3.47.7
   sdk: ^3.12.0
 
 # Dependencies specify other packages that your package needs in order to work.
@@ -39,7 +39,7 @@ dependencies:
 
   flutter_native_splash: ^2.4.8
   fl_chart: ^1.2.0
-  health: ^13.3.1
+  health: ^13.3.2
   intl: ^0.20.3
 
 dev_dependencies:
